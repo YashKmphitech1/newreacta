@@ -14,6 +14,7 @@ import {
 import Breadcrumb from "../../components/Common/Breadcrumb"
 
 import avatar from "../../assets/images/users/avatar-1.jpg"
+import VerticalLayout from '../../components/VerticalLayout';
 const UserProfile = props => {
   const [email, setemail] = useState("")
   const [name, setname] = useState("")
@@ -24,7 +25,7 @@ const UserProfile = props => {
   }
 
   return (
-    <React.Fragment>
+    <VerticalLayout>
       <div className="page-content">
         <MetaTags>
           <title>Profile | Kmphitech - Admin Dashboard</title>
@@ -95,7 +96,7 @@ const UserProfile = props => {
           </Card>
         </Container>
       </div>
-    </React.Fragment>
+    </VerticalLayout>
   )
 }
 
