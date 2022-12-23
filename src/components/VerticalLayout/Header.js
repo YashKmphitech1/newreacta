@@ -26,7 +26,7 @@ import {
 } from "../../store/actions"
 
 const Header = props => {
-  const [search, setsearch] = useState(false)
+  const [search, setsearch] = useState("")
   const [singlebtn, setSinglebtn] = useState(false)
 
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
@@ -125,19 +125,21 @@ const Header = props => {
           </div>
 
           <div className="d-flex">
-            <form className="app-search d-none d-lg-block">
+            <form className="app-search">
               <div className="position-relative">
                 <input
                   type="text"
                   className="form-control"
                   placeholder={props.t("Search") + "..."}
+                  value={props.value}
+                  onChange={props.onChange}
                 />
                 <span className="fa fa-search"></span>
               </div>
             </form>
 
-            <Dropdown
-              className="d-inline-block d-lg-none ms-2"
+            {/* <Dropdown
+              className="d-none ms-2"
               onClick={() => {
                 setsearch(!search)
               }}
@@ -161,7 +163,7 @@ const Header = props => {
                   </div>
                 </Form>
               </DropdownMenu>
-            </Dropdown>
+            </Dropdown> */}
 
             {/* <LanguageDropdown /> */}
 

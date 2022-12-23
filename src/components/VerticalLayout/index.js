@@ -52,18 +52,18 @@ class Layout extends Component {
     }
   }
   toggleMenuCallback = () => {
-    if (this.props.leftSideBarType === "default") {
-      this.props.changeSidebarType("condensed", this.state.isMobile)
-    } else if (this.props.leftSideBarType === "condensed") {
-      this.props.changeSidebarType("default", this.state.isMobile)
-    }
+    // if (this.props.leftSideBarType === "default") {
+    //   this.props.changeSidebarType("condensed", this.state.isMobile)
+    // } else if (this.props.leftSideBarType === "condensed") {
+    //   this.props.changeSidebarType("default", this.state.isMobile)
+    // }
   }
 
   render() {
     return (
       <React.Fragment>
         <div id="layout-wrapper">
-          <Header toggleMenuCallback={this.toggleMenuCallback} />
+          <Header toggleMenuCallback={this.toggleMenuCallback} value={this.props.value} onChange={this.props.onChange} />
           <Sidebar
             theme={this.props.leftSideBarTheme}
             type={this.props.leftSideBarType}

@@ -18,6 +18,7 @@ import servicesIcon4 from "../../assets/images/services-icon/04.png";
 
 //i18n
 import { withTranslation } from "react-i18next"
+import VerticalLayout from '../../components/VerticalLayout';
 
 const Dashboard = props => {
   const [menu, setMenu] = useState(false)
@@ -25,7 +26,7 @@ const Dashboard = props => {
     setMenu(!menu)
   }
   return (
-    <React.Fragment>
+    <VerticalLayout>
       <div className="page-content">
         <MetaTags>
           <title>Dashboard | Kmphitech - Admin Dashboard</title>
@@ -165,7 +166,7 @@ const Dashboard = props => {
         </Container>
       </div>
 
-    </React.Fragment>
+    </VerticalLayout>
   )
 }
 

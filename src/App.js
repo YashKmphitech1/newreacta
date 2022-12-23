@@ -40,11 +40,10 @@ const App = (props) => {
     <>
       <Router>
         <Routes>
-
-          <Route path="/" element={ <PrivateRoutes > <Layout><Dashboard/></Layout> </PrivateRoutes> } />
-          <Route path="/dashboard" element={ <PrivateRoutes > <Layout><Dashboard/></Layout> </PrivateRoutes> } />
-          <Route path="/tables-datatable" element={ <PrivateRoutes > <Layout><DatatableTables/></Layout> </PrivateRoutes> } />
-          <Route path="/profile" element={ <PrivateRoutes > <Layout><UserProfile/></Layout> </PrivateRoutes> } />
+          <Route path="/" element={ <PrivateRoutes > <Dashboard/> </PrivateRoutes> } />
+          <Route path="/dashboard" element={ <PrivateRoutes > <Dashboard/> </PrivateRoutes> } />
+          <Route path="/tables-datatable" element={ <PrivateRoutes > <DatatableTables/> </PrivateRoutes> } />
+          <Route path="/profile" element={ <PrivateRoutes > <UserProfile/> </PrivateRoutes> } />
           
           <Route path="/auth/login" element={<Login/>} />
           <Route path="*" element={<Pages404 />} />
