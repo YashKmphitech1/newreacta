@@ -1,14 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { useState } from "react"
-
-import { connect } from "react-redux"
-import { Form, Dropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Button } from "reactstrap"
-
 import { Link } from "react-router-dom"
 
 // Import menuDropdown
 import LanguageDropdown from "../TopbarDropdown/LanguageDropdown"
-import NotificationDropdown from "../TopbarDropdown/NotificationDropdown"
 import ProfileMenu from "../TopbarDropdown/ProfileMenu"
 
 import logodarkImg from "../../assets/images/logo-dark.png";
@@ -18,19 +13,7 @@ import logolightImg from "../../assets/images/logo-light.png";
 //i18n
 import { withTranslation } from "react-i18next"
 
-// Redux Store
-import {
-  showRightSidebarAction,
-  toggleLeftmenu,
-  changeSidebarType,
-} from "../../store/actions"
-
 const Header = props => {
-  const [search, setsearch] = useState("")
-  const [singlebtn, setSinglebtn] = useState(false)
-
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-
   function toggleFullscreen() {
     if (
       !document.fullscreenElement &&
@@ -179,8 +162,6 @@ const Header = props => {
                 <i className="mdi mdi-fullscreen"></i>
               </button>
             </div>
-
-            {/* <NotificationDropdown /> */}
             <ProfileMenu />
 
             {/* <div
@@ -213,18 +194,4 @@ Header.propTypes = {
   toggleLeftmenu: PropTypes.func
 }
 
-const mapStatetoProps = state => {
-  const {
-    layoutType,
-    showRightSidebar,
-    leftMenu,
-    leftSideBarType,
-  } = state.Layout
-  return { layoutType, showRightSidebar, leftMenu, leftSideBarType }
-}
-
-export default connect(mapStatetoProps, {
-  showRightSidebarAction,
-  toggleLeftmenu,
-  changeSidebarType,
-})(withTranslation()(Header))
+export default (withTranslation()(Header))

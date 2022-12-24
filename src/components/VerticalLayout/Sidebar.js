@@ -22,12 +22,4 @@ Sidebar.propTypes = {
   type: PropTypes.string,
 }
 
-const mapStatetoProps = state => {
-  return {
-    layout: state.Layout,
-  }
-}
-export default connect(
-  mapStatetoProps,
-  {}
-)(withTranslation()(Sidebar))
+export default Sidebar

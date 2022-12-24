@@ -24,7 +24,7 @@ const ProfileMenu = props => {
   const [menu, setMenu] = useState(false)
 
   const handleLogout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     navigate("/auth/login")
   }
   return (

@@ -8,7 +8,6 @@ import Authmiddleware from "./routes/middleware/Authmiddleware";
 
 // layouts Format
 import VerticalLayout from "./components/VerticalLayout/";
-import NonAuthLayout from "./components/NonAuthLayout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Authentication/Login";
 

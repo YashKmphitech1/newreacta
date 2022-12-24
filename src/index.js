@@ -4,15 +4,13 @@ import App from "./App";
 import "./i18n";
 import { Provider } from "react-redux";
 import store from "./store";
-
-const rootElement = document.getElementById("root")
+const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+      <Provider store={store}>
+        <App />
+      </Provider>
   </StrictMode>
 );
-

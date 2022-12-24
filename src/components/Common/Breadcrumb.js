@@ -29,27 +29,9 @@ const Breadcrumb = props => {
           </ol>
         </div>
       </Col>
-      {/* <Col sm={6}>
-        <div className="float-end d-none d-md-block">
-          <Dropdown
-            isOpen={setting_Menu}
-            toggle={() => {
-              setsetting_Menu(!setting_Menu)
-            }}
-          >
-            <DropdownToggle color="primary" className="btn btn-primary dropdown-toggle waves-effect waves-light">
-              <i className="mdi mdi-cog me-2"></i> Settings
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem tag="a" href="#">Action</DropdownItem>
-              <DropdownItem tag="a" href="#">Another action</DropdownItem>
-              <DropdownItem tag="a" href="#">Something else here</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem tag="a" href="#">Separated link</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </div>
-      </Col> */}
+      <Col sm={6} className="d-flex justify-content-end">
+        {props.feature}
+      </Col>
     </Row>
   )
 }
