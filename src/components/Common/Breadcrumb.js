@@ -20,12 +20,12 @@ const Breadcrumb = props => {
             </BreadcrumbItem>
             </> : ''
             }
-            <BreadcrumbItem>
+            <BreadcrumbItem active>
               <Link to="/#">{props.title}</Link>
             </BreadcrumbItem>
-            <BreadcrumbItem active>
+            {/* <BreadcrumbItem active>
               {props.breadcrumbItem}
-            </BreadcrumbItem>
+            </BreadcrumbItem> */}
           </ol>
         </div>
       </Col>

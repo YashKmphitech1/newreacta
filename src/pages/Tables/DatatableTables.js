@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import MetaTags from "react-meta-tags"
+import React, { useEffect } from "react";
+import MetaTags from "react-meta-tags";
 import {
   Row,
   Col,
@@ -12,65 +12,82 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-} from "reactstrap"
-import DataTable from "react-data-table-component"
+} from "reactstrap";
+import DataTable from "react-data-table-component";
 //Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb"
-import "./datatables.scss"
-import { useState } from "react"
-import VerticalLayout from "../../components/VerticalLayout"
+import Breadcrumbs from "../../components/Common/Breadcrumb";
+import "./datatables.scss";
+import { useState } from "react";
+import VerticalLayout from "../../components/VerticalLayout";
 
 const DatatableTables = () => {
-  const [editModal, setEditModal] = useState(false)
-  const [editItem, setEditItem] = useState({})
-  const editToggle = row => {
-    const size = Object.keys(row).length
-    setEditItem(row)
-    console.log("size>>>>>", size)
-    console.log("row", row, "data")
-    setEditModal(!editModal)
-  }
+  //edit
+  const [editModal, setEditModal] = useState(false);
+  const [editItem, setEditItem] = useState({});
+  const editToggle = (row) => {
+    const size = Object.keys(row).length;
+    setEditItem(row);
+    console.log("size>>>>>", size);
+    console.log("row", row, "data");
+    setEditModal(!editModal);
+  };
 
-  const handleEditSubmit = async data => {
-    data.preventDefault()
-    console.log("editItem", editItem)
-    alert("edit success")
-  }
+  //add
+  const handleAddSubmit = async (data) => {
+    data.preventDefault();
+    console.log("editItem", editItem);
+    alert("edit success");
+  };
 
-  const [delModal, setDelModal] = useState(false)
-  const [delItem, setDelItem] = useState({})
-  const delToggle = row => {
-    const size = Object.keys(row).length
-    setDelItem(row)
-    console.log("size>>>>>", size)
-    console.log("row", row, "data")
-    setDelModal(!delModal)
-  }
+  //delete
+  const [addModal, setAddModal] = useState(false);
+  const [addItem, setAddItem] = useState({});
+  const addToggle = (row) => {
+    setAddItem(row);
+    console.log("row", row, "data");
+    setAddModal(!addModal);
+  };
 
-  const handleDelSubmit = async data => {
-    data.preventDefault()
-    alert("Delete success")
-  }
+  const handleEditSubmit = async (data) => {
+    data.preventDefault();
+    console.log("editItem", editItem);
+    alert("edit success");
+  };
+
+  const [delModal, setDelModal] = useState(false);
+  const [delItem, setDelItem] = useState({});
+  const delToggle = (row) => {
+    const size = Object.keys(row).length;
+    setDelItem(row);
+    console.log("size>>>>>", size);
+    console.log("row", row, "data");
+    setDelModal(!delModal);
+  };
+
+  const handleDelSubmit = async (data) => {
+    data.preventDefault();
+    alert("Delete success");
+  };
 
   const acolumns = [
     {
       name: "Title",
-      selector: row => row.title,
+      selector: (row) => row.title,
       sortable: true,
     },
     {
       name: "FullName",
-      selector: row => row.name,
+      selector: (row) => row.name,
       sortable: true,
     },
     {
       name: "Year",
-      selector: row => row.year,
+      selector: (row) => row.year,
       sortable: true,
     },
     {
       name: "Action",
-      cell: row => (
+      cell: (row) => (
         <>
           <button
             className="action-btn btn btn-primary me-3"
@@ -88,7 +105,7 @@ const DatatableTables = () => {
         </>
       ),
     },
-  ]
+  ];
 
   const adata = [
     {
@@ -175,25 +192,25 @@ const DatatableTables = () => {
       name: "Vasoya",
       year: "1984",
     },
-  ]
+  ];
 
-  const [search, setSearch] = useState("")
-  const [filterData, setFilterData] = useState([])
+  const [search, setSearch] = useState("");
+  const [filterData, setFilterData] = useState([]);
   function filtersData(data) {
-    const filterBy = data.filter(rows => {
-      return rows.name && rows.name.toLowerCase().match(search.toLowerCase())
-    })
+    const filterBy = data.filter((rows) => {
+      return rows.name && rows.name.toLowerCase().match(search.toLowerCase());
+    });
 
-    return filterBy
+    return filterBy;
   }
 
   useEffect(() => {
-    const filterdt = filtersData(adata)
-    setFilterData(filterdt)
-  }, [search])
+    const filterdt = filtersData(adata);
+    setFilterData(filterdt);
+  }, [search]);
 
   return (
-    <VerticalLayout value={search} onChange={e => setSearch(e.target.value)}>
+    <VerticalLayout value={search} onChange={(e) => setSearch(e.target.value)}>
       <div className="page-content">
         <MetaTags>
           <title>Data Tables | Kmphitech - Admin Dashboard</title>
@@ -201,8 +218,17 @@ const DatatableTables = () => {
         <div className="container-fluid">
           <Breadcrumbs
             maintitle="Kmphitech"
-            title="Tables"
-            breadcrumbItem="Data Tables"
+            title="Orders"
+            breadcrumbItem="Orders"
+            feature={
+              <button
+                onClick={addToggle}
+                color="primary"
+                className="btn btn-primary dropdown-toggle waves-effect waves-light"
+              >
+                <i className="mdi mdi-plus-box-multiple me-2"></i> Add
+              </button>
+            }
           />
           <Row>
             <Col className="col-12">
@@ -267,7 +293,41 @@ const DatatableTables = () => {
               <Button color="primary" type="submit">
                 Edit
               </Button>{" "}
-              
+            </ModalFooter>
+          </form>
+        </ModalBody>
+      </Modal>
+
+      <Modal isOpen={addModal} toggle={addToggle}>
+        <ModalHeader toggle={addToggle}>Add Item</ModalHeader>
+        <ModalBody className="pb-0">
+          <form className="form-horizontal mt-2" onSubmit={handleAddSubmit}>
+            <div className="mb-3">
+              <input
+                name="title"
+                className="form-control"
+                placeholder="Enter title"
+                type="text"
+                required
+              />
+            </div>
+
+            <div className="">
+              <input
+                name="name"
+                className="form-control"
+                placeholder="Enter Name"
+                type="text"
+                required
+              />
+            </div>
+            <ModalFooter className="px-0">
+              <Button color="secondary" onClick={addToggle}>
+                Cancel
+              </Button>
+              <Button color="primary" type="submit">
+                Add
+              </Button>{" "}
             </ModalFooter>
           </form>
         </ModalBody>
@@ -293,7 +353,7 @@ const DatatableTables = () => {
         </ModalBody>
       </Modal>
     </VerticalLayout>
-  )
-}
+  );
+};
 
-export default DatatableTables
+export default DatatableTables;

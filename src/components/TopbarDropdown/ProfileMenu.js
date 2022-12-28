@@ -25,7 +25,7 @@ const ProfileMenu = props => {
 
   const handleLogout = () => {
     sessionStorage.clear();
-    navigate("/auth/login")
+    navigate("/login")
   }
   return (
     <React.Fragment>
